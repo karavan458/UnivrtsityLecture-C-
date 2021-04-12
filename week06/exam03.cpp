@@ -5,7 +5,7 @@ using namespace std;
 /* 
 복사생성자
 1. 값의 의한 호출시 매개변수로 객체가 전달될 때
-2. 다른 객체를 이용해 초기화되는 객체의 경우
+2. 객체가 생성되자 마자 다른 객체를 이용해 초기화되는 객체의 경우
 3. 함수의 반환값으로 객체가 반환되는 경우
 */
 
@@ -39,27 +39,33 @@ public:
     void show() {
         cout << m_x << endl;
     }
+    
+    Point(const Point& p) {
+        cout << "복사 생성자 호출" << endl;
+    }
 };
+
+Point getPoint() {
+    Point p;
+    p.Set_Point(100);
+    return p;
+}
 
 int main() {
 
-    Point P1; // 객체의 이름이 존재  
-    P1 = Point(1); // 임시객체 임시객체는 이 줄을 벚어나면 바로 소멸함
-    cout << "test" << endl;
+    Point p;
+    p.CopyPoint(p);
+    p = getPoint();
 
-    P1.show();
+    //객체 치환 복사생성자 호출 X
+    Point p2;
+    p2 = p;
 
-    /*
-    임시객체 
-    1. 이름이 없다. 맴버에 접근이 불가능하다. 
-    2. 생성자와 소멸자를 호출한다. 
-    3. ;을 만나는 순간 소멸자가 호출된다. -> ;에서 파괴된다.
-    4. 임시객체를 대입하면 값이 복사된다.
-    */
+    //복사생성자 호출 O
+    Point p3 = p;
+    
     
     return 0;
 }
 
-//호출되는 객체는 복사의 개념이기 때문에 디폴트 생성자는 실행되지 않는다.
 
-// xcode  gcc 컴파일 
