@@ -58,7 +58,7 @@ int main() {
     cout << endl;
 
     Time t4(3, 10, 30);
-    Time t5(1, 20, 40);
+    Time t5(1, 20, 20);
 
     t3 = t4 - t5;
     t3.OutTime();
