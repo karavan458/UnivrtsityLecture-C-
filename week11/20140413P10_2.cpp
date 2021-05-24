@@ -42,10 +42,10 @@ public:
     void Print();
 };
 
-Man::Man(string name, int age):Person() {}
+Man::Man(string name, int age):Person(name, age, male) {}
 
 void Man::Print() {
-    Print();
+    Person::Print();
     cout << ", 성별 : M \n";  
 }
 
@@ -56,10 +56,10 @@ public:
     void Print();
 };
 
-Woman::Woman(string name, int age):Person(){}
+Woman::Woman(string name, int age):Person(name, age, female){}
 
 void Woman::Print(){
-    Print();
+    Person::Print();
     cout << ", 성별 : F \n";
 }
 
